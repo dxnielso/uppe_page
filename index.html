@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universidad Politécnica de Pénjamo</title>
+    <link rel="shortcut icon" href="./img/icono.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Estilos -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap");
+
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* - - - - - - - - - - - -  HEADER - - - - - - - - - - - - - */
+      .header {
+        background-color: #20596a;
+        width: 100%;
+        height: 55px;
+        padding: 0 122px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Header izquierda */
+      .header__izq {
+        display: flex;
+        column-gap: 8px;
+      }
+      .header__icono_contenedor {
+        padding: 10px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.144);
+        color: rgba(255, 255, 255, 0.562);
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.4s;
+      }
+      .header__icono_contenedor:hover {
+        background-color: #0aa9b3;
+        color: white;
+      }
+
+      /* Header derecha */
+      .header__der {
+        height: 35px;
+      }
+      /* input */
+      .header__der > :nth-child(1) {
+        height: 100%;
+        min-width: 250px;
+        padding: 5px 12px;
+        font-size: 14px;
+        font-weight: 300;
+        border: none;
+        outline: none;
+      }
+      /* button */
+      #button {
+        height: 100%;
+        padding: 0 10px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        font-weight: 300;
+        font-size: 14px;
+        background-color: #0aa9b3;
+        transition: background-color 0.5s;
+      }
+      #button:hover {
+        background-color: #84aac9;
+      }
+
+      /* - - - - - - - - - - - -  INFOROMATION - - - - - - - - - - - - - */
+      .information {
+        height: 120px;
+        padding: 0 122px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .information__logo {
+        height: 40%;
+      }
+
+      /* - - - - - - - - - - - -  NAVBAR - - - - - - - - - - - - - */
+      .navbar {
+        height: 50px;
+        width: 100%;
+        padding: 0 122px;
+        background-color: #0aa9b3;
+      }
+      .nav {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .nav__link {
+        text-decoration: none;
+        font-size: 12px;
+        color: white;
+      }
+      .nav__link span {
+        text-transform: uppercase;
+      }
+
+      /* - - - - - - - - - - - -  BANNER - - - - - - - - - - - - - */
+      .banner {
+        padding: 50px 122px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .banner__image {
+        /* min-width: 500px; */
+        max-width: 1280px;
+      }
+
+      /* - - - - - - - - - - - -  PREGUNTA - - - - - - - - - - - - - */
+      .pregunta {
+        /* padding: 0 122px; */
+        margin-bottom: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1280px;
+      }
+      .pregunta__box {
+        background-color: #444444;
+        color: white;
+        padding: 40px 35px;
+        box-shadow: rgba(0, 0, 0, 0.719) 5px 5px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 100px;
+      }
+      .pregunta__info {
+        width: 80%;
+      }
+      .pregunta__info h3 {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .pregunta__info p {
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      .pregunta__boton-contenedor {
+        width: 20%;
+      }
+      .pregunta__btn {
+        width: 100%;
+        background-color: #0aa9b3;
+        cursor: pointer;
+        color: white;
+        border: none;
+        outline: none;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 5px;
+      }
+      .pregunta__btn span {
+        font-size: 15px;
+      }
+      .pregunta__btn-icono {
+        width: 25px;
+        height: 25px;
+        color: #0aa9b3;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .pregunta__btn-icono i {
+        font-size: 14px;
+      }
+
+      /* - - - - - - - - - - - -  CARDS - - - - - - - - - - - - - */
+      .cards {
+        height: 250px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 5px;
+        margin-bottom: 80px;
+      }
+      .card {
+        cursor: pointer;
+        width: 33%;
+        height: 100%;
+        position: relative;
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card div {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #0aa8b371;
+        z-index: 10;
+      }
+      .card h2 {
+        z-index: 20;
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      #card__students {
+        background-image: url("./img/students.jpg");
+      }
+      #card__teachers {
+        background-image: url("./img/teachers.jpg");
+      }
+      #card__uppe {
+        background-image: url("./img/uppe.jpg");
+      }
+
+      /* - - - - - - - - - - - -  FOOTER - - - - - - - - - - - - - */
+      .footer {
+        width: 100%;
+        background-color: #444444;
+      }
+
+      /* footer info */
+      .footer__info {
+        width: 100%;
+        padding: 50px 122px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        column-gap: 30px;
+      }
+
+      /* sobre nosotros */
+      .footer__sobre-nosotros {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+      .footer__sobre-nosotros h4 {
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .footer__sobre-nosotros a {
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        column-gap: 10px;
+      }
+      .footer__sobre-nosotros a i {
+        color: #0aa9b3;
+      }
+
+      /* contacto */
+      .footer__contacto {
+        width: 50%;
+      }
+      .footer__contacto h4 {
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .footer__contacto a {
+        display: flex;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 12px;
+        column-gap: 10px;
+      }
+      .footer__contacto a i {
+        color: #0aa9b3;
+      }
+
+      /* footer bottom */
+      .footer__bottom {
+        width: 100%;
+        background-color: #2b2b2b;
+        padding: 20px 122px;
+      }
+      .footer__bottom h5 {
+        color: white;
+        font-size: 12px;
+        font-weight: 300;
+      }
+      .footer__bottom h5 span {
+        color: #0aa9b3;
+        font-weight: 500;
+      }
+    </style>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__izq">
+        <div class="header__icono_contenedor">
+          <i class="fa-brands fa-twitter"></i>
+        </div>
+        <div class="header__icono_contenedor">
+          <i class="fa-brands fa-facebook-f"></i>
+        </div>
+        <div class="header__icono_contenedor">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+        <div class="header__icono_contenedor">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </div>
+        <div class="header__icono_contenedor">
+          <i class="fa-brands fa-google-plus-g"></i>
+        </div>
+        <div class="header__icono_contenedor">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="header__icono_contenedor">
+          <i class="fa-brands fa-pinterest"></i>
+        </div>
+      </div>
+      <div class="header__der">
+        <input type="text" name="site" id="site" placeholder="Buscar algo..." />
+        <input type="submit" value="Go" id="button" />
+      </div>
+    </header>
+
+    <!-- Information -->
+    <div class="information">
+      <div class="information__logo">
+        <img src="./img/logo.png" alt="Logo" />
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <nav class="nav">
+        <a href="/" class="nav__link">
+          <span>Conócenos</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>Oferta educativa</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>Aspirantes</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>Estudiantes</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>Egresados</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>Impulso estudiantil</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>transparencia</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="/" class="nav__link">
+          <span>universidad</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+      <div class="banner__image">
+        <img src="./img/banner.jpg" alt="" />
+      </div>
+    </div>
+
+    <!-- Pregunta -->
+    <div class="pregunta">
+      <div class="pregunta__box">
+        <div class="pregunta__info">
+          <h3>¿Por qué estudiar en la UPPE?</h3>
+          <p>
+            La Universidad Politécnica de Pénjamo es una institución educativa
+            comprometida con la sociedad en la formación de profesionistas
+            capaces de influir en el crecimiento competitivo de la región.
+          </p>
+        </div>
+
+        <div class="pregunta__boton-contenedor">
+          <button class="pregunta__btn">
+            <div class="pregunta__btn-icono">
+              <i class="fa-solid fa-play"></i>
+            </div>
+            <span>Solicita tu ficha</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards">
+      <div class="card" id="card__students">
+        <div></div>
+        <h2>Admisión y Becas</h2>
+      </div>
+      <div class="card" id="card__teachers">
+        <div></div>
+        <h2>Profesores</h2>
+      </div>
+      <div class="card" id="card__uppe">
+        <div></div>
+        <h2>UPPE Sostenible</h2>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footer__info">
+        <div class="footer__sobre-nosotros">
+          <h4>Sobre Nosotros</h4>
+          <a href="/">
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Directorio</span>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Organigrama</span>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Normatividad vigente</span>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Contáctanos</span>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Aviso de privacidad</span>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Términos y condiciones</span>
+          </a>
+        </div>
+
+        <div class="footer__contacto">
+          <h4>Contacto</h4>
+          <a href="/">
+            <i class="fa-solid fa-location-pin"></i>
+            <div>
+              <p>
+                Carretera Irapuato - La Piedad Km, 44, Predio El Derramadero.
+              </p>
+              <span>Pénjamo, Guanajuato, C.P. 36921</span>
+            </div>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-phone"></i>
+            <span>(+52) 469 692 6000</span>
+          </a>
+          <a href="/">
+            <i class="fa-solid fa-envelope"></i>
+            <span>contacto@uppenjamo.edu.mx</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <h5>Copyright <span>Departamento de Sistemas</span></h5>
+      </div>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/525d62cfab.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
